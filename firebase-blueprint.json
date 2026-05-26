@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User account registration details and mock mobile device token",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "format": "email", "description": "Email address" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "pushToken": { "type": "string", "description": "Generated push notification token for the simulated React Native device" }
+      },
+      "required": ["uid", "email"]
+    },
+    "tasks": {
+      "title": "Task",
+      "description": "CRUD tasks created by the user within the React Native app",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Task ID" },
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "title": { "type": "string", "description": "Task description title" },
+        "completed": { "type": "boolean", "description": "Task completion state" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"], "description": "Task priority level" }
+      },
+      "required": ["id", "userId", "title", "completed", "createdAt"]
+    },
+    "notifications": {
+      "title": "NotificationLog",
+      "description": "Sent push notifications history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Notification ID" },
+        "userId": { "type": "string", "description": "Target user ID" },
+        "title": { "type": "string", "description": "Notification title" },
+        "body": { "type": "string", "description": "Notification body content" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Sent timestamp" },
+        "status": { "type": "string", "enum": ["sent", "delivered", "read"], "description": "Transaction status" }
+      },
+      "required": ["id", "userId", "title", "body", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profiles"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "tasks",
+      "description": "Tasks created by specific users"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": "notifications",
+      "description": "Simulated real-time push notifications sent to specific users"
+    }
+  }
+}

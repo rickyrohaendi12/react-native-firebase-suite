@@ -1,0 +1,8 @@
+{
+  "name": "React Native Firebase Suite",
+  "description": "High-fidelity React Native smartphone simulator and developer sandbox showcasing real-time Firebase Authentication, Firestore CRUD, and push notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
